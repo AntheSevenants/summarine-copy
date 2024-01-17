@@ -65,6 +65,9 @@ for public_file in tqdm(public_files, desc="Copying public files to destination 
 
 print(f"Found {len(public_resources)} public resources")
 
+# In case resources directory does not exist
+os.makedirs(f"{args.destination}/.resources", exist_ok=True)
+
 for public_resource in tqdm(public_resources, desc="Copying public files to destination repository"):
     source_file =  f"{full_source_path}/.resources/{public_resource}"
     dest_file = (f"{args.destination}/.resources/{public_resource}")
